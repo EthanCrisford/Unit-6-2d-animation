@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
-        groundMask = 1 
+        //groundMask = 1 
     }
 
     void ChangeAnimationState(string newState)
