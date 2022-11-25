@@ -43,4 +43,13 @@ public class Player : MonoBehaviour
         currentState = newState;
 
     }
+
+    void Update()
+    {
+        xAxis = 
+
+
+
+
+    }
 }
