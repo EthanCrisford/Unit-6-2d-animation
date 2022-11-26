@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private Rigidbody2D myRigidbody;
+    float horizontal;
 
+    [SerializeField]
+    private float speed;
 
     // Start is called before the first frame update
     void Start()
@@ -16,11 +19,14 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        Input.GetAxis("Horizontal");
+
+        Movement(horizontal);
     }
 
-    private void Movement()
+    private void Movement(float horizontal)
     {
-        myRigidbody.velocity = Vector2.left; //x + -1, y = 0;
+        if(Input.GetKeyDown("d"))
+        myRigidbody.velocity = new Vector2(horizontal * speed, myRigidbody.velocity.y);
     }
 }
