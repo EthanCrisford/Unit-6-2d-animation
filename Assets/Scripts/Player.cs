@@ -5,28 +5,37 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Rigidbody2D myRigidbody;
+    Animator animator;
     float horizontal;
-
-    [SerializeField]
-    private float speed;
+    private string currentState;
+    string idle;
+    string newState;
 
     // Start is called before the first frame update
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        animator.Play("idle");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Input.GetAxis("Horizontal");
+        if (Input.GetKey("d") == true)
 
-        Movement(horizontal);
+            myRigidbody.velocity = new Vector2(5, 0);
+
     }
 
-    private void Movement(float horizontal)
+    void ChangeAnimationState(string newState)
     {
-        if(Input.GetKeyDown("d"))
-        myRigidbody.velocity = new Vector2(horizontal * speed, myRigidbody.velocity.y);
+        if (currentState == idle) return;
+
+        animator.Play("idle");
+
+        currentState = newState;
+
     }
+
 }
