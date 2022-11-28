@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
 
     }
 
+  
+
     void ChangeAnimationState(string newState)
     {
         if (currentState == newState) return;
