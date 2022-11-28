@@ -32,12 +32,8 @@ public class Player : MonoBehaviour
         {
             myRigidbody.velocity = new Vector2(0, 0);
             ChangeAnimationState("Idle");
-
         }
-
     }
-
-  
 
     void ChangeAnimationState(string newState)
     {
@@ -46,9 +42,7 @@ public class Player : MonoBehaviour
         animator.Play(newState);
 
         currentState = newState;
-
     }
-
 }
 
 
