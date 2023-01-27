@@ -13,10 +13,10 @@ public class Player : MonoBehaviour
     const string idle = "Idle";
     const string walk = "walk";
     public GameObject explosionPrefab;
-    AudioSource audioSource;
-    public AudioClip walkSound;
-    public AudioClip pickupSound;
-    public float AudioVolume;
+    //AudioSource audioSource;
+    //public AudioClip walkSound;
+    //public AudioClip pickupSound;
+    //public float AudioVolume;
 
 
     // Start is called before the first frame update
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.Play(idle);
         gameObject.tag = "Player";
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
             // set the position of the explosion to be the same as the diamond
             prefab.transform.position = diamond.transform.position;
             Destroy(diamond.gameObject);
-            PlaySoundEffectPickup();
+            //PlaySoundEffectPickup();
         }
     }
 
@@ -74,19 +74,33 @@ public class Player : MonoBehaviour
 
         animator.Play(newState);
 
-        PlaySoundEffectWalk();
+        //PlaySoundEffectWalk();
+
+        AudioManagerScript script = FindObjectOfType<AudioManagerScript>();
+        if( script != null)
+        {
+            print("attempting to play walksound");
+            script.Play("walk");
+            
+        }
+        else
+        {
+            print("ams not found");
+        }
+        
+        
 
         currentState = newState;
     }
 
     void PlaySoundEffectWalk()
     {
-        audioSource.PlayOneShot(walkSound);
+        //audioSource.PlayOneShot(walkSound);
     }
 
     void PlaySoundEffectPickup()
     {
-        audioSource.PlayOneShot(pickupSound);
+        //audioSource.PlayOneShot(pickupSound);
     }
 
 }
